@@ -1,0 +1,15 @@
+C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Models\bin\Debug\RedBadge.Models.dll.config
+C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Models\bin\Debug\RedBadge.Models.dll
+C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Models\bin\Debug\RedBadge.Models.pdb
+C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Models\bin\Debug\EntityFramework.dll
+C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Models\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Models\bin\Debug\EntityFramework.xml
+C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Models\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Models\obj\Debug\RedBadge.Models.csprojAssemblyReference.cache
+C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Models\obj\Debug\RedBadge.Models.csproj.CopyComplete
+C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Models\obj\Debug\RedBadge.Models.dll
+C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Models\obj\Debug\RedBadge.Models.pdb
