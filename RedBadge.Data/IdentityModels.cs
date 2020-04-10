@@ -20,6 +20,8 @@ namespace TattooRedBadge.WebMVC.Data
             return userIdentity;
         }
 
+        
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

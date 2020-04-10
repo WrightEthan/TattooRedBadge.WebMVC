@@ -5,15 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RedBadge.Data
+namespace RedBadge.Models
 {
-    public class Artist
+    public class ArtistCreate
     {
         [Key]
         [Required]
         public int ArtistID { get; set; }
-
-        public Guid OwnerId { get; set; }
 
         [Required]
         [Display(Name = "First Name")]
@@ -29,6 +27,6 @@ namespace RedBadge.Data
             get { return FName + " " + LName; }
         }
 
-        //ICollection of Tattoos
+
     }
 }

@@ -18,20 +18,24 @@ namespace RedBadge.Services
             _userId = userId;
         }
 
+
+
         public bool CreateTattoo(TattooCreate model)
         {
+            using (var ctx = new ApplicationDbContext())
+            {
+               
             var entity =
                 new Tattoo()
                 {
                     OwnerId = _userId,
-                    ClientID = model.ClientID == 0 ? null : model.ClientID,
+                    ClientID =  model.ClientID == 0 ? null : model.ClientID,
                     Location = model.Location,
                     Description = model.Description,
                     BlackAndWhite = model.BlackAndWhite,
                     DateAndTime = model.DateAndTime,
                 };
-            using (var ctx = new ApplicationDbContext())
-            {
+
                 ctx.Tattoos.Add(entity);
                 return ctx.SaveChanges() == 1;
             }

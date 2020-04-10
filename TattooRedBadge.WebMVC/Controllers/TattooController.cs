@@ -25,6 +25,8 @@ namespace TattooRedBadge.WebMVC.Controllers
 
         public ActionResult Create()
         {
+            //create client service and getClientsForUser assign it to a var listOfClients
+            //ViewBag = SelectList(listOfCLients,ClientID,ClientName)
             return View();
         }
 
@@ -33,7 +35,8 @@ namespace TattooRedBadge.WebMVC.Controllers
         public ActionResult Create(TattooCreate model)
         {
             if (!ModelState.IsValid) return View(model);
-
+            
+            
             var service = CreateTattooService();
 
             if (service.CreateTattoo(model))

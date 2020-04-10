@@ -9,6 +9,7 @@ namespace RedBadge.Models
 {
     public class TattooCreate
     {
+        public IEnumerable<ClientListItem> ClientList { get; set; }
         [Required]
         public int TattooID { get; set; }
 

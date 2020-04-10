@@ -30,6 +30,7 @@ namespace RedBadge.Services
                         e =>
                         new ClientListItem
                         {
+                            ClientID = e.ClientID,
                             OwnerId = _userId,
                             FName = e.FName,
                             LName = e.LName,
@@ -113,5 +114,6 @@ namespace RedBadge.Services
             }
 
         }
+        
     }
 }
