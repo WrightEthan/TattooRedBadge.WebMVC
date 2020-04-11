@@ -29,6 +29,13 @@ namespace TattooRedBadge.WebMVC.Controllers
             //ViewBag = SelectList(listOfCLients,ClientID,ClientName)
             return View();
         }
+        private ClientService CreateClientService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new ClientService(userId);
+            return service;
+        }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]

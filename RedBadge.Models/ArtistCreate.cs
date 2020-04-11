@@ -26,7 +26,5 @@ namespace RedBadge.Models
         {
             get { return FName + " " + LName; }
         }
-
-
     }
 }

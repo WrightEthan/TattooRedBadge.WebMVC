@@ -61,7 +61,7 @@ namespace RedBadge.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public ClientDetail GetClientbyId(int ID)
+        public ClientDetail GetClientById(int ID)
         {
             using (var ctx = new ApplicationDbContext())
             {

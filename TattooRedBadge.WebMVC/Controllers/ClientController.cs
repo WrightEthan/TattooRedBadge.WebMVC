@@ -55,9 +55,75 @@ namespace TattooRedBadge.WebMVC.Controllers
         public ActionResult Details(int ID)
         {
             var svc = CreateClientService();
-            var model = svc.GetClientbyId(ID);
+            var model = svc.GetClientById(ID);
 
             return View(model);
         }
+
+        public ActionResult Delete(int ID)
+        {
+            var svc = CreateClientService();
+            var model = svc.GetClientById(ID);
+
+            return View(model);
+        }
+
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int ID)
+        {
+            var service = CreateClientService();
+
+            service.DeleteClient(ID);
+
+            TempData["SaveResult"] = "Your personal information was deleted.";
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int ID)
+        {
+            var service = CreateClientService();
+            var detail = service.GetClientById(ID);
+            var model =
+                new ClientEdit
+                {
+                    ClientID = detail.ClientID,
+                    FName = detail.FName,
+                    LName = detail.LName,
+                    PhoneNumber = detail.PhoneNumber,
+                    Email = detail.Email
+                };
+            return View(model);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int ID, ClientEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.ClientID != ID)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+
+            var service = CreateClientService();
+
+            if (service.UpdateClient(model))
+            {
+                TempData["SaveResult"] = "Your personal information was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Your personal information could not be updated");
+            return View(model);
+        }
+
     }
 }
