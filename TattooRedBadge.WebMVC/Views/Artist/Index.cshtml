@@ -9,43 +9,38 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.OwnerId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ArtistFullName)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.OwnerId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArtistFullName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ArtistID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ArtistID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ArtistID })
-        </td>
-    </tr>
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success fade in" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
 }
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ArtistFullName)
+            </th>
+            <th>Artist's Work</th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArtistFullName)
+                </td>
+                <td></td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ArtistID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ArtistID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ArtistID })
+                </td>
+            </tr>
+        }
+        
+    </table>

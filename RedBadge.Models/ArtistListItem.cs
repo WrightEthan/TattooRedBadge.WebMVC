@@ -23,6 +23,7 @@ namespace RedBadge.Models
         [Display(Name = "Last Name")]
         public string LName { get; set; }
 
+        [Display(Name = "Artist Name")]
         [Required]
         public string ArtistFullName
         {

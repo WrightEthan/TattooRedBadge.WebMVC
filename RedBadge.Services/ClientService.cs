@@ -42,6 +42,25 @@ namespace RedBadge.Services
             }
         }
 
+        public IEnumerable<ClientList> GetClientNames()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Clients
+                    .Select(
+                    e =>
+                    new ClientList
+                    {
+                        ClientID = e.ClientID,
+                        FName = e.FName
+                    }
+            );
+                return query.ToArray();
+            }
+    }
+
         public bool CreateClient(ClientCreate model)
         {
             var entity =
