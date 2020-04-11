@@ -27,8 +27,13 @@ namespace TattooRedBadge.WebMVC.Controllers
         {
             //create client service and getClientsForUser assign it to a var listOfClients
             //ViewBag = SelectList(listOfCLients,ClientID,ClientName)
+            var service = CreateClientService();
+            var clientList = new SelectList(service.GetClientNames(), "ClientID", "FName");
+
+            ViewBag.ClientID = clientList;
             return View();
         }
+
         private ClientService CreateClientService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
