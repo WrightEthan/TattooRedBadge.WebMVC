@@ -92,7 +92,7 @@ namespace RedBadge.Services
                     var entity = ctx
                         .Tattoos
                         .Single(e => e.TattooID == model.TattooID && e.OwnerId == _userId);
-
+                entity.ClientID = model.ClientID;
                 entity.Location = model.Location;
                 entity.Description = model.Description;
                 entity.BlackAndWhite = model.BlackAndWhite;
@@ -102,7 +102,26 @@ namespace RedBadge.Services
                 }
             }
 
-        public bool DeleteTattoo(int ID)
+        public IEnumerable<ClientList> GetClientNames()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Clients
+                    .Select(
+                    e =>
+                    new ClientList
+                    {
+                        ClientID = e.ClientID,
+                        FName = e.FName
+                    }
+            );
+                return query.ToArray();
+            }
+        }
+
+            public bool DeleteTattoo(int ID)
         {
             using (var ctx = new ApplicationDbContext())
             {

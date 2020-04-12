@@ -70,17 +70,21 @@ namespace TattooRedBadge.WebMVC.Controllers
 
         public ActionResult Edit(int ID)
         {
+            var clientsService = CreateClientService();
             var service = CreateTattooService();
+            var clientList = new SelectList(service.GetClientNames(), "ClientID", "FName");
             var detail = service.GetTattooById(ID);
             var model =
                 new TattooEdit
                 {
+                    ClientID = detail.ClientID,
                     TattooID = detail.TattooID,
                     Location = detail.Location,
                     Description = detail.Description,
                     BlackAndWhite = detail.BlackAndWhite,
                     DateAndTime = detail.DateAndTime
                 };
+            ViewBag.ClientID = clientList;
             return View(model);
         }
 
