@@ -15,8 +15,9 @@ namespace RedBadge.Data
         [Required]
         public Guid OwnerId { get; set; }
         
-        //[ForeignKey(nameof(Artist))]
-        //public string ArtistFullName { get; set; }
+        [ForeignKey("Artist")]
+        public int? ArtistID { get; set; }
+        public virtual Artist Artist { get; set; }
 
         [Required]
         public string Location { get; set; }
