@@ -17,16 +17,16 @@ namespace RedBadge.Data
 
         [Required]
         [Display(Name = "First Name")]
-        public string FName { get; set; }
+        public string ArtistFName { get; set; }
 
         [Required]
         [Display(Name = "Last Name")]
-        public string LName { get; set; }
+        public string ArtistLName { get; set; }
 
         [Required]
         public string ArtistFullName
         {
-            get { return FName + " " + LName; }
+            get { return ArtistFName + " " + ArtistLName; }
         }
 
         //ICollection of Tattoos

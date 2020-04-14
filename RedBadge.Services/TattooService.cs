@@ -30,6 +30,7 @@ namespace RedBadge.Services
                     {
                         OwnerId = _userId,
                         ClientID = model.ClientID,
+                        ArtistID = model.ArtistID,
                         Location = model.Location,
                         Description = model.Description,
                         BlackAndWhite = model.BlackAndWhite,
@@ -43,10 +44,12 @@ namespace RedBadge.Services
         }
         public IEnumerable<TattooListItem> GetTattoos()
         {
+            var artistService = new ArtistService(_userId);
             var clientService = new ClientService(_userId);
             using (var ctx = new ApplicationDbContext())
             {
                 var clientDetail = new ClientDetail();
+                var artistDetail = new ArtistDetail();
                 var query =
                     ctx
                         .Tattoos
@@ -58,12 +61,13 @@ namespace RedBadge.Services
                                     TattooID = e.TattooID,
                                     // ClientID = e.ClientID, // Client = A method that takes in a Client, assigns values to properties in a new ClientListItem, return that ClientListItem
                                     Client = clientService.GetClientById(e.ClientID),
+                                    Artist = artistService.GetArtistById(e.ArtistID),
                                     Location = e.Location,
                                     Description = e.Description,
                                     BlackAndWhite = e.BlackAndWhite,
                                     DateAndTime = e.DateAndTime,
                                 }
-                        );  
+                        );
                 return query;//.ToArray();
             }
 
@@ -84,6 +88,7 @@ namespace RedBadge.Services
                         OwnerId = entity.OwnerId,
                         TattooID = entity.TattooID,
                         ClientID = entity.ClientID,
+                        ArtistID = entity.ArtistID,
                         Location = entity.Location,
                         Description = entity.Description,
                         BlackAndWhite = entity.BlackAndWhite,
@@ -93,21 +98,22 @@ namespace RedBadge.Services
 
         }
         public bool UpdateTattoo(TattooEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
             {
-                using(var ctx = new ApplicationDbContext())
-                {
-                    var entity = ctx
-                        .Tattoos
-                        .Single(e => e.TattooID == model.TattooID && e.OwnerId == _userId);
+                var entity = ctx
+                    .Tattoos
+                    .Single(e => e.TattooID == model.TattooID && e.OwnerId == _userId);
                 entity.ClientID = model.ClientID;
+                entity.ArtistID = model.ArtistID;
                 entity.Location = model.Location;
                 entity.Description = model.Description;
                 entity.BlackAndWhite = model.BlackAndWhite;
                 entity.DateAndTime = model.DateAndTime;
 
                 return ctx.SaveChanges() == 1;
-                }
             }
+        }
 
         public IEnumerable<ClientList> GetClientNames()
         {
@@ -127,7 +133,25 @@ namespace RedBadge.Services
             }
         }
 
-            public bool DeleteTattoo(int ID)
+        public IEnumerable<ArtistList> GetArtistNames()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Artists
+                    .Select(
+                        e =>
+                        new ArtistList
+                        {
+                            ArtistID = e.ArtistID,
+                        }
+                        );
+                return query.ToArray();
+            }
+        }
+
+        public bool DeleteTattoo(int ID)
         {
             using (var ctx = new ApplicationDbContext())
             {

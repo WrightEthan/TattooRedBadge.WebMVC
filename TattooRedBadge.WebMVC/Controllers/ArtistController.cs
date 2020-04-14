@@ -90,8 +90,8 @@ namespace TattooRedBadge.WebMVC.Controllers
                 new ArtistEdit
                 {
                     ArtistID = detail.ArtistID,
-                    FName = detail.FName,
-                    LName = detail.LName,
+                    ArtistFName = detail.ArtistFName,
+                    ArtistLName = detail.ArtistLName,
                 };
             return View(model);
         }

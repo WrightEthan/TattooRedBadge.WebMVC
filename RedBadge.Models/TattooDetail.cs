@@ -16,8 +16,7 @@ namespace RedBadge.Models
 
         public int ClientID { get; set; }
 
-        //[ForeignKey(nameof(Artist))]
-        //public string ArtistFullName { get; set; }
+        public int ArtistID { get; set; }
 
         public string Location { get; set; }
 

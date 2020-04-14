@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Artist.cs" />
+    <Compile Include="ArtistList.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="ClientList.cs" />
     <Compile Include="IdentityModels.cs" />
@@ -81,6 +82,10 @@
     <Compile Include="Migrations\202004131922568_yes1.cs" />
     <Compile Include="Migrations\202004131922568_yes1.Designer.cs">
       <DependentUpon>202004131922568_yes1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004141929183_yessir.cs" />
+    <Compile Include="Migrations\202004141929183_yessir.Designer.cs">
+      <DependentUpon>202004141929183_yessir.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004131922568_yes1.resx">
       <DependentUpon>202004131922568_yes1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004141929183_yessir.resx">
+      <DependentUpon>202004141929183_yessir.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

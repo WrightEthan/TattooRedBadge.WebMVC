@@ -27,10 +27,12 @@ namespace TattooRedBadge.WebMVC.Controllers
         {
             //create client service and getClientsForUser assign it to a var listOfClients
             //ViewBag = SelectList(listOfCLients,ClientID,ClientName)
-            var service = CreateClientService();
-            var clientList = new SelectList(service.GetClientNames(), "ClientID", "FullName");
-
+            var clientDetailService = CreateClientService();
+            var artistDetailService = CreateArtistService();
+            var clientList = new SelectList(clientDetailService.GetClientNames(), "ClientID", "ClientFullName");
+            var artistList = new SelectList(artistDetailService.GetArtistNames(), "ArtistID", "ArtistFullName");
             ViewBag.ClientID = clientList;
+            ViewBag.ArtistID = artistList;
             return View();
         }
 
@@ -41,6 +43,12 @@ namespace TattooRedBadge.WebMVC.Controllers
             return service;
         }
 
+        private ArtistService CreateArtistService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new ArtistService(userId);
+            return service;
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -70,13 +78,16 @@ namespace TattooRedBadge.WebMVC.Controllers
         public ActionResult Edit(int ID)
         {
             var clientsService = CreateClientService();
+            var artistService = CreateArtistService();
             var service = CreateTattooService();
-            var clientList = new SelectList(clientsService.GetClientNames(), "ClientID", "FullName");
+            var clientList = new SelectList(clientsService.GetClientNames(), "ClientID", "ClientFullName");
+            var artistList = new SelectList(artistService.GetArtistNames(), "ArtistID", "ArtistFullName");
             var detail = service.GetTattooById(ID);
             var model =
                 new TattooEdit
                 {
                     ClientID = detail.ClientID,
+                    ArtistID = detail.ArtistID,
                     TattooID = detail.TattooID,
                     Location = detail.Location,
                     Description = detail.Description,
@@ -84,6 +95,7 @@ namespace TattooRedBadge.WebMVC.Controllers
                     DateAndTime = detail.DateAndTime
                 };
             ViewBag.ClientID = clientList;
+            ViewBag.ArtistID = artistList;
             return View(model);
         }
 

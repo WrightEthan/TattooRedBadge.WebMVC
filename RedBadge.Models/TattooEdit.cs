@@ -20,5 +20,6 @@ namespace RedBadge.Models
         [Required]
         public DateTime DateAndTime { get; set; }
         public int ClientID { get; set; }
+        public int ArtistID { get; set; }
     }
 }

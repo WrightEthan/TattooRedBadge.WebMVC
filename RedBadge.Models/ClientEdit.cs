@@ -12,10 +12,10 @@ namespace RedBadge.Models
         public int ClientID { get; set; }
 
         [Required]
-        public string FName { get; set; }
+        public string ClientFName { get; set; }
 
         [Required]
-        public string LName { get; set; }
+        public string ClientLName { get; set; }
 
         [Required]
         public string PhoneNumber { get; set; }

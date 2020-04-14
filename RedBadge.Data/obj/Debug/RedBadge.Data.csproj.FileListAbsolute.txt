@@ -23,3 +23,4 @@ C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Data\obj\Deb
 C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Data\obj\Debug\RedBadge.Data.Migrations.almostdone.resources
 C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Data\obj\Debug\RedBadge.Data.Migrations.yep.resources
 C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Data\obj\Debug\RedBadge.Data.Migrations.yes1.resources
+C:\Users\ethan.wright\Desktop\EFARed\TattooRedBadge.WebMVC\RedBadge.Data\obj\Debug\RedBadge.Data.Migrations.yessir.resources

@@ -15,13 +15,13 @@ namespace RedBadge.Models
 
         public string ClientFullName
         {
-            get { return FName + " " + LName; }
+            get { return ClientFName + " " + ClientLName; }
         }
         [Display(Name = "First Name")]
-        public string FName { get; set; }
+        public string ClientFName { get; set; }
 
         [Display(Name = "Last Name")]
-        public string LName { get; set; }
+        public string ClientLName { get; set; }
 
         [Display(Name = "Date of Birth")]
         public DateTime DOB { get; set; }

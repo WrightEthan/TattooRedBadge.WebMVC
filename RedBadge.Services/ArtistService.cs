@@ -18,23 +18,6 @@ namespace RedBadge.Services
             _userId = userId;
         }
 
-        public bool CreateArtist(ArtistCreate model)
-        {
-            var entity =
-                new Artist()
-                {
-                    OwnerId = _userId,
-                    ArtistID = model.ArtistID,
-                    FName = model.FName,
-                    LName = model.LName
-                };
-            using (var ctx = new ApplicationDbContext())
-            {
-                ctx.Artists.Add(entity);
-                return ctx.SaveChanges() == 1;
-            }
-        }
-
         public IEnumerable<ArtistListItem> GetArtists()
         {
             using (var ctx = new ApplicationDbContext())
@@ -48,13 +31,50 @@ namespace RedBadge.Services
                                 new ArtistListItem
                                 {
                                     ArtistID = e.ArtistID,
-                                    FName = e.FName,
-                                    LName = e.LName
+                                    ArtistFName = e.ArtistFName,
+                                    ArtistLName = e.ArtistLName
                                 }
                         );
                 return query.ToArray();
             }
         }
+
+        public IEnumerable<ArtistList> GetArtistNames()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Artists
+                    .Select(
+                    e =>
+                    new ArtistList
+                    {
+                        ArtistID = e.ArtistID,
+                        ArtistFullName = e.ArtistFName + " " + e.ArtistLName
+                    }
+            );
+                return query.ToArray();
+            }
+        }
+
+        public bool CreateArtist(ArtistCreate model)
+        {
+            var entity =
+                new Artist()
+                {
+                    OwnerId = _userId,
+                    ArtistID = model.ArtistID,
+                    ArtistFName = model.ArtistFName,
+                    ArtistLName = model.ArtistLName
+                };
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Artists.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
 
         public ArtistDetail GetArtistById(int ID)
         {
@@ -69,13 +89,13 @@ namespace RedBadge.Services
                     {
                         ArtistID = entity.ArtistID,
                         OwnerId = _userId,
-                        FName = entity.FName,
-                        LName = entity.LName
+                        ArtistFName = entity.ArtistFName,
+                        ArtistLName = entity.ArtistLName
                     };
             }
         }
 
-        public bool UpdateArtist(ArtistEdit model)
+            public bool UpdateArtist(ArtistEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -83,8 +103,8 @@ namespace RedBadge.Services
                     .Artists
                     .Single(e => e.ArtistID == model.ArtistID && e.OwnerId == _userId);
 
-                entity.FName = model.FName;
-                entity.LName = model.LName;
+                entity.ArtistFName = model.ArtistFName;
+                entity.ArtistLName = model.ArtistLName;
 
                 return ctx.SaveChanges() == 1;
             }
