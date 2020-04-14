@@ -78,6 +78,10 @@
     <Compile Include="Migrations\202004120008280_yep.Designer.cs">
       <DependentUpon>202004120008280_yep.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004131922568_yes1.cs" />
+    <Compile Include="Migrations\202004131922568_yes1.Designer.cs">
+      <DependentUpon>202004131922568_yes1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tattoo.cs" />
@@ -107,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004120008280_yep.resx">
       <DependentUpon>202004120008280_yep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004131922568_yes1.resx">
+      <DependentUpon>202004131922568_yes1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

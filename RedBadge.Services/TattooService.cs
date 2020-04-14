@@ -24,17 +24,17 @@ namespace RedBadge.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-               
-            var entity =
-                new Tattoo()
-                {
-                    OwnerId = _userId,
-                    ClientID =  model.ClientID == 0 ? null : model.ClientID,
-                    Location = model.Location,
-                    Description = model.Description,
-                    BlackAndWhite = model.BlackAndWhite,
-                    DateAndTime = model.DateAndTime,
-                };
+
+                var entity =
+                    new Tattoo()
+                    {
+                        OwnerId = _userId,
+                        ClientID = model.ClientID,
+                        Location = model.Location,
+                        Description = model.Description,
+                        BlackAndWhite = model.BlackAndWhite,
+                        DateAndTime = model.DateAndTime,
+                    };
 
                 ctx.Tattoos.Add(entity);
                 return ctx.SaveChanges() == 1;
@@ -43,27 +43,33 @@ namespace RedBadge.Services
         }
         public IEnumerable<TattooListItem> GetTattoos()
         {
+            var clientService = new ClientService(_userId);
             using (var ctx = new ApplicationDbContext())
             {
+                var clientDetail = new ClientDetail();
                 var query =
                     ctx
                         .Tattoos
-                        .Where(e => e.OwnerId == _userId)
+                        .Where(e => e.OwnerId == _userId).ToArray()
                         .Select(
                             e =>
                                 new TattooListItem
                                 {
                                     TattooID = e.TattooID,
+                                    // ClientID = e.ClientID, // Client = A method that takes in a Client, assigns values to properties in a new ClientListItem, return that ClientListItem
+                                    Client = clientService.GetClientById(e.ClientID),
                                     Location = e.Location,
                                     Description = e.Description,
                                     BlackAndWhite = e.BlackAndWhite,
                                     DateAndTime = e.DateAndTime,
                                 }
-                        );
-                return query.ToArray();
+                        );  
+                return query;//.ToArray();
             }
 
         }
+
+        //private ClientListItem ConvertClientToListItem (Client){}
         public TattooDetail GetTattooById(int ID)
         {
             using (var ctx = new ApplicationDbContext())
@@ -77,6 +83,7 @@ namespace RedBadge.Services
                     {
                         OwnerId = entity.OwnerId,
                         TattooID = entity.TattooID,
+                        ClientID = entity.ClientID,
                         Location = entity.Location,
                         Description = entity.Description,
                         BlackAndWhite = entity.BlackAndWhite,
@@ -114,7 +121,6 @@ namespace RedBadge.Services
                     new ClientList
                     {
                         ClientID = e.ClientID,
-                        FName = e.FName
                     }
             );
                 return query.ToArray();

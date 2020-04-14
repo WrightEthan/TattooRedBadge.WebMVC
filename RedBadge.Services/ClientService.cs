@@ -54,7 +54,7 @@ namespace RedBadge.Services
                     new ClientList
                     {
                         ClientID = e.ClientID,
-                        FName = e.FName
+                        FullName = e.FName + " " + e.LName
                     }
             );
                 return query.ToArray();

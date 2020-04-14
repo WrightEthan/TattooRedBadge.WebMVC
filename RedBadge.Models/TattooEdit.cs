@@ -19,6 +19,6 @@ namespace RedBadge.Models
         public bool BlackAndWhite { get; set; }
         [Required]
         public DateTime DateAndTime { get; set; }
-        public int? ClientID { get; set; }
+        public int ClientID { get; set; }
     }
 }
