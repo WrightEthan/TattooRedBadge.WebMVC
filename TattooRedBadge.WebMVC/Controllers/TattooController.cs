@@ -28,7 +28,7 @@ namespace TattooRedBadge.WebMVC.Controllers
             //create client service and getClientsForUser assign it to a var listOfClients
             //ViewBag = SelectList(listOfCLients,ClientID,ClientName)
             var service = CreateClientService();
-            var clientList = new SelectList(service.GetClientNames(), "ClientID", "FName");
+            var clientList = new SelectList(service.GetClientNames(), "ClientID", "FullName");
 
             ViewBag.ClientID = clientList;
             return View();
@@ -47,7 +47,6 @@ namespace TattooRedBadge.WebMVC.Controllers
         public ActionResult Create(TattooCreate model)
         {
             if (!ModelState.IsValid) return View(model);
-            
             
             var service = CreateTattooService();
 
@@ -72,7 +71,7 @@ namespace TattooRedBadge.WebMVC.Controllers
         {
             var clientsService = CreateClientService();
             var service = CreateTattooService();
-            var clientList = new SelectList(service.GetClientNames(), "ClientID", "FName");
+            var clientList = new SelectList(clientsService.GetClientNames(), "ClientID", "FullName");
             var detail = service.GetTattooById(ID);
             var model =
                 new TattooEdit

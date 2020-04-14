@@ -237,7 +237,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Tattoo\Index.cshtml" />
     <Content Include="Views\Tattoo\Create.cshtml" />
     <Content Include="Views\Tattoo\Details.cshtml" />
     <Content Include="Views\Tattoo\Delete.cshtml" />
@@ -253,6 +252,7 @@
     <Content Include="Views\Artist\Edit.cshtml" />
     <Content Include="Views\Artist\Index.cshtml" />
     <Content Include="Views\Tattoo\Edit.cshtml" />
+    <Content Include="Views\Tattoo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

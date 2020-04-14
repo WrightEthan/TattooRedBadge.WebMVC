@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<RedBadge.Models.TattooListItem>
-
 @{
     ViewBag.Title = "Index";
 }
@@ -9,22 +8,13 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-
-@if (TempData.ContainsKey("SaveResult"))
-{
-    <div class="alert alert-success fade in" role="alert">
-
-        <button type="button" class="close" data-dismiss="alert">
-            <span>&times;</span>
-        </button>
-        @TempData["SaveResult"]
-    </div>
-
-}
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ClientFullName)
+            @Html.DisplayNameFor(model => model.TattooID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.ClientFullName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ArtistFullName)
@@ -44,33 +34,35 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClientFullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ArtistFullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateAndTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BlackAndWhite)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.TattooID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.TattooID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.TattooID })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TattooID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client.ClientFullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtistFullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateAndTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlackAndWhite)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TattooID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TattooID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TattooID })
+        </td>
+    </tr>
+}
 
 </table>

@@ -31,7 +31,7 @@ namespace RedBadge.Data
         public DateTime DateAndTime { get; set; }
 
         [ForeignKey("Client")]
-        public int? ClientID { get; set; }
+        public int ClientID { get; set; } // was nullable, made it non-nullable
 
         public virtual Client Client { get; set; }
     }

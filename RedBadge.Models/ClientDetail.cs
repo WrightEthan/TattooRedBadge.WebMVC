@@ -13,6 +13,10 @@ namespace RedBadge.Models
 
         public Guid OwnerId { get; set; }
 
+        public string ClientFullName
+        {
+            get { return FName + " " + LName; }
+        }
         [Display(Name = "First Name")]
         public string FName { get; set; }
 
