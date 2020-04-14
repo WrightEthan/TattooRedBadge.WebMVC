@@ -91,8 +91,8 @@ namespace TattooRedBadge.WebMVC.Controllers
                 new ClientEdit
                 {
                     ClientID = detail.ClientID,
-                    FName = detail.FName,
-                    LName = detail.LName,
+                    ClientFName = detail.ClientFName,
+                    ClientLName = detail.ClientLName,
                     PhoneNumber = detail.PhoneNumber,
                     Email = detail.Email
                 };

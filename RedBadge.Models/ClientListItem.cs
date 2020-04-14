@@ -12,13 +12,13 @@ namespace RedBadge.Models
 
         public Guid OwnerId { get; set; }
 
-        public string FName { get; set; }
+        public string ClientFName { get; set; }
 
-        public string LName { get; set; }
+        public string ClientLName { get; set; }
 
         public string ClientFullName
         {
-            get { return FName + " " + LName; }
+            get { return ClientFName + " " + ClientLName; }
         }
 
         public DateTime DOB { get; set; }

@@ -32,8 +32,8 @@ namespace RedBadge.Services
                         {
                             ClientID = e.ClientID,
                             OwnerId = _userId,
-                            FName = e.FName,
-                            LName = e.LName,
+                            ClientFName = e.ClientFName,
+                            ClientLName = e.ClientLName,
                             DOB = e.DOB,
                             PhoneNumber = e.PhoneNumber,
                             Email = e.Email
@@ -54,7 +54,7 @@ namespace RedBadge.Services
                     new ClientList
                     {
                         ClientID = e.ClientID,
-                        FullName = e.FName + " " + e.LName
+                        ClientFullName = e.ClientFName + " " + e.ClientLName
                     }
             );
                 return query.ToArray();
@@ -68,8 +68,8 @@ namespace RedBadge.Services
                 {
                     OwnerId = _userId,
                     ClientID = model.ClientID,
-                    FName = model.FName,
-                    LName = model.LName,
+                    ClientFName = model.ClientFName,
+                    ClientLName = model.ClientLName,
                     DOB = model.DOB,
                     PhoneNumber = model.PhoneNumber,
                     Email = model.Email
@@ -93,8 +93,8 @@ namespace RedBadge.Services
                     {
                         OwnerId = entity.OwnerId,
                         ClientID = entity.ClientID,
-                        FName = entity.FName,
-                        LName = entity.LName,
+                        ClientFName = entity.ClientFName,
+                        ClientLName = entity.ClientLName,
                         DOB = entity.DOB,
                         PhoneNumber = entity.PhoneNumber,
                         Email = entity.Email
@@ -109,8 +109,8 @@ namespace RedBadge.Services
                     .Clients
                     .Single(e => e.ClientID == model.ClientID && e.OwnerId == _userId);
 
-                entity.FName = model.FName;
-                entity.LName = model.LName;
+                entity.ClientFName = model.ClientFName;
+                entity.ClientLName = model.ClientLName;
                 entity.PhoneNumber = model.PhoneNumber;
                 entity.Email = model.Email;
 

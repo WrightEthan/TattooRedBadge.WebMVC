@@ -11,9 +11,9 @@ namespace RedBadge.Data
     {
         [Key]
         public int ClientID { get; set; }
-        public string FName { get; set; }
-        public string LName { get; set; }
-        public string FullName { get; set; }
+        public string ClientFName { get; set; }
+        public string ClientLName { get; set; }
+        public string ClientFullName { get; set; }
 
 
     }

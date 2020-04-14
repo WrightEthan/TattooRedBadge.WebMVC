@@ -14,17 +14,17 @@ namespace RedBadge.Models
 
         [Required]
         [Display(Name = "First Name")]
-        public string FName { get; set; }
+        public string ClientFName { get; set; }
 
         [Required]
         [Display(Name = "Last Name")]
-        public string LName { get; set; }
+        public string ClientLName { get; set; }
 
         [Required]
         [Display(Name = "Full Name")]
         public string ClientFullName
         {
-            get { return FName + " " + LName ;}
+            get { return ClientFName + " " + ClientLName; }
         }
 
         [Required]

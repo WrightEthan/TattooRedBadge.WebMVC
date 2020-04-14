@@ -16,6 +16,9 @@ namespace RedBadge.Models
         [Display(Name = "Client")]
         public int ClientID { get; set; }
 
+        [Display(Name = "Artist")]
+        public int ArtistID { get; set; }
+
         [Required]
         public string Location { get; set; }
 

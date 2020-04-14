@@ -15,10 +15,6 @@ namespace RedBadge.Data
         [Required]
         public Guid OwnerId { get; set; }
         
-        [ForeignKey("Artist")]
-        public int? ArtistID { get; set; }
-        public virtual Artist Artist { get; set; }
-
         [Required]
         public string Location { get; set; }
 
@@ -27,12 +23,16 @@ namespace RedBadge.Data
 
         [Required]
         public bool BlackAndWhite { get; set; }
-        //public image
+
         public DateTime DateAndTime { get; set; }
 
         [ForeignKey("Client")]
-        public int ClientID { get; set; } // was nullable, made it non-nullable
+        public int ClientID { get; set; }
 
         public virtual Client Client { get; set; }
+        
+        [ForeignKey("Artist")]
+        public int ArtistID { get; set; }
+        public virtual Artist Artist { get; set; }
     }
 }
